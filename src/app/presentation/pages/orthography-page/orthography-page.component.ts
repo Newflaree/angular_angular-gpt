@@ -4,8 +4,10 @@ import {
   Input
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChatMessageComponent } from '../../components/chat-bubbles/chat-message/chat-message.component';
-import { MyMessageComponent } from '../../components/chat-bubbles/my-message/my-message.component';
+import {
+  ChatMessageComponent,
+  MyMessageComponent
+} from '@components/index';
 
 @Component({
   selector: 'app-orthography-page',
