@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-assistant-page',
-  imports: [],
+  standalone: true,
+  imports: [
+    CommonModule
+  ],
   templateUrl: './assistant-page.component.html',
-  styleUrl: './assistant-page.component.css'
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AssistantPageComponent {
+export default class AssistantPageComponent {
 
 }

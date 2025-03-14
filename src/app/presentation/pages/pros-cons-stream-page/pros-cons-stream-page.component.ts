@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pros-cons-stream-page',
-  imports: [],
+  standalone: true,
+  imports: [
+    CommonModule
+  ],
   templateUrl: './pros-cons-stream-page.component.html',
-  styleUrl: './pros-cons-stream-page.component.css'
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProsConsStreamPageComponent {
+export default class ProsConsStreamPageComponent {
 
 }

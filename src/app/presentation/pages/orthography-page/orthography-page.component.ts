@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-orthography-page',
-  imports: [],
+  standalone: true,
+  imports: [
+    CommonModule
+  ],
   templateUrl: './orthography-page.component.html',
-  styleUrl: './orthography-page.component.css'
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OrthographyPageComponent {
-
-}
+export default class OrthographyPageComponent {}
