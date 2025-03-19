@@ -8,7 +8,9 @@ import {
   MyMessageComponent,
   TextMessagesBoxComponent,
   TextMessagesBoxFileComponent,
+  TextMessagesBoxSelectComponent,
   TextMessageEvent,
+  TextMessageBoxEvent,
   TypingLoaderComponent
 } from '@components/index';
 
@@ -19,7 +21,9 @@ import {
     CommonModule,
     ChatMessageComponent,
     MyMessageComponent,
+    TextMessagesBoxComponent,
     TextMessagesBoxFileComponent,
+    TextMessagesBoxSelectComponent,
     TypingLoaderComponent,
   ],
   templateUrl: './orthography-page.component.html',
@@ -32,5 +36,9 @@ export default class OrthographyPageComponent {
 
   handleMessageWithFile( { prompt, file }: TextMessageEvent ) {
     console.log({ prompt, file });
+  }
+
+  handleMessageWithSelect( event: TextMessageBoxEvent ) {
+    console.log( event );
   }
 }

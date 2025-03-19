@@ -32,7 +32,6 @@ export interface TextMessageEvent {
 })
 export class TextMessagesBoxFileComponent {
   @Input() placeholder: string = '';
-  @Input() disableCorrections: boolean = false;
   @Output() onMessage = new EventEmitter<TextMessageEvent>();
 
   public fb = inject(FormBuilder);
