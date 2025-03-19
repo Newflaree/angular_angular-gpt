@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import {
   ChatMessageComponent,
   MyMessageComponent,
+  TextMessagesBoxComponent,
   TypingLoaderComponent
 } from '@components/index';
 
@@ -17,7 +18,8 @@ import {
     CommonModule,
     ChatMessageComponent,
     MyMessageComponent,
-    TypingLoaderComponent
+    TextMessagesBoxComponent,
+    TypingLoaderComponent,
   ],
   templateUrl: './orthography-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
