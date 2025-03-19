@@ -5,48 +5,36 @@ import {
   signal
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   ChatMessageComponent,
   MyMessageComponent,
   TextMessagesBoxComponent,
-  TextMessagesBoxFileComponent,
-  TextMessagesBoxSelectComponent,
-  TextMessageEvent,
-  TextMessageBoxEvent,
   TypingLoaderComponent
 } from '@components/index';
-import { OpenAiService } from '../../services/openai.service';
+import { OpenAiService } from '../../presentation//services/openai.service';
 import { Message } from '@interfaces/message.interface'
 
 @Component({
-  selector: 'app-orthography-page',
+  selector: 'app-chat-template',
   standalone: true,
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ChatMessageComponent,
     MyMessageComponent,
-    TextMessagesBoxComponent,
-    TextMessagesBoxFileComponent,
-    TextMessagesBoxSelectComponent,
     TypingLoaderComponent,
+    TextMessagesBoxComponent,
   ],
-  templateUrl: './orthography-page.component.html',
+  templateUrl: './chat-template.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export default class OrthographyPageComponent {
-  public messages = signal<Message[]>([{ text: 'Hola Mundo', isGpt: true }]);
+export class ChatTemplateComponent {
+  public messages = signal<Message[]>([]);
   public isLoading = signal(false);
   public openAiService = inject( OpenAiService );
 
   handleMessage( prompt: string ) {
     console.log({ prompt });
-  }
-
-  handleMessageWithFile( { prompt, file }: TextMessageEvent ) {
-    console.log({ prompt, file });
-  }
-
-  handleMessageWithSelect( event: TextMessageBoxEvent ) {
-    console.log( event );
   }
 }
