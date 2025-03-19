@@ -14,8 +14,16 @@
     </div>
   </div>
   <!-- MessageBox -->
+
+  <!--
   <app-text-messages-box
     placeholder="Escribe aquí lo que desees"
     (onMessage)="handleMessage($event)"
+  />
+  -->
+
+  <app-text-messages-box-file
+    placeholder="Escribe aquí lo que desees"
+    (onMessage)="handleMessageWithFile($event)"
   />
 </div>

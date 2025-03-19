@@ -11,37 +11,48 @@ import { RouterModule } from '@angular/router';
 import {
   FormBuilder,
   ReactiveFormsModule,
-  Validators
+  Validators,
 } from '@angular/forms';
 
+
+export interface TextMessageEvent {
+  file: File;
+  prompt?: string | null;
+}
+
 @Component({
-  selector: 'app-text-messages-box',
+  selector: 'app-text-messages-box-file',
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule,
     ReactiveFormsModule
   ],
-  templateUrl: './text-messages-box.component.html',
+  templateUrl: './text-messages-box-file.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TextMessagesBoxComponent {
+export class TextMessagesBoxFileComponent {
   @Input() placeholder: string = '';
   @Input() disableCorrections: boolean = false;
-  @Output() onMessage = new EventEmitter<string>();
+  @Output() onMessage = new EventEmitter<TextMessageEvent>();
 
   public fb = inject(FormBuilder);
   public form = this.fb.group({
-    prompt: ['', Validators.required]
+    prompt: [],
+    file: [null, Validators.required]
   });
+  public file: File | undefined;
+
+  handleSelectedFile( event: any ) {
+    const file = event.target.files[0];
+    this.form.controls.file.setValue(file);
+  }
 
   handleSubmit() {
     if ( this.form.invalid ) return;
 
-    const { prompt } = this.form.value;
-    console.log({ prompt });
 
-    this.onMessage.emit( prompt ?? '' );
+    const { prompt, file } = this.form.value;
+    this.onMessage.emit({ prompt, file: file! });
     this.form.reset();
   }
 }
